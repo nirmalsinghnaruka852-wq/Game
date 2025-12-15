@@ -1,6 +1,6 @@
 import Phaser from "phaser";
-import BootScene from "./scenes/BootScene";
-import Level1 from "./scenes/Level1";
+import BootScene from '../game/levels/BootScene.js'
+import Level1 from '../game/levels/Level1.js';
 const winSize = {
     width: 1024,
     height: 800

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import Phaser from "phaser";
-import gameConfig from "./config";
+import gameConfig from "../config/Phaser.config.js";
+function GamePage(){
 
-export default function Game(){
     const gameRef = useRef(null);
 
     useEffect(() =>{
@@ -18,3 +18,5 @@ export default function Game(){
 
     return <div id="phaser-game" />;
 }
+    
+export default GamePage
