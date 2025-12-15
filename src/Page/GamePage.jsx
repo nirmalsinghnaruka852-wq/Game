@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import Phaser from "phaser";
 import gameConfig from "../config/Phaser.config.js";
 function GamePage(){
-
     const gameRef = useRef(null);
 
     useEffect(() =>{
