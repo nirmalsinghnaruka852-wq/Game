@@ -11,7 +11,7 @@ const config = {
     height: winSize.height,
     parent: "phaser-game",
     scale: {
-        mode: Phaser.Scale.FIT,        // 🔥 RESPONSIVE
+        mode: Phaser.Scale.FIT,        
         autoCenter: Phaser.Scale.CENTER_BOTH,
       },
     physics: {
