@@ -61,12 +61,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
         if (!onGround) {
             this.setState("jump");
+            this.setScale(0.75,0.75);
         } 
         else if (this.body.velocity.x !== 0) {
             this.setState("run");
+            
         } 
         else {
             this.setState("idle");
+            this.setScale(0.75,0.75);
         }
     }
 }
