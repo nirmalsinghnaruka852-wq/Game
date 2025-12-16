@@ -22,8 +22,13 @@ export default class Level1 extends Phaser.Scene{
         
         this.playerSpwaner = this.objectLayer.objects?.find(ob => ob.name === "playerSpawner");
 
+
+
+
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
         this.player = new Player(this, this.playerSpwaner.x, this.playerSpwaner.y);
+        
         this.physics.add.collider(this.player, this.groundLayer);
         this.physics.add.collider(this.player, this.groundLayerLeft);
         this.physics.add.collider(this.player, this.groundLayerRight);

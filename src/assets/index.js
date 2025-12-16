@@ -1,6 +1,8 @@
-import Player from './player.png'
+import playerIdle from './playerIdle.png'
+import playerRun from './playerRun.png'
+import playerJump from './playerJump.png'
 import TileSet from './tileset.png'
 
 export {
-    Player,TileSet
+    playerIdle, playerRun, playerJump, TileSet
 }
