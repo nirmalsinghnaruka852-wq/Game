@@ -2,11 +2,11 @@ import Phaser from "phaser";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y){
-        super(scene, x, y, "player");
+        super(scene, x, y, "playerIdle");
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
-
+        this.ingate = false;
         this.setOrigin(0.5, 1);
         this.body.setSize(20, 28);
         this.body.setOffset(
@@ -32,14 +32,48 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.play(newState, true);
     }
     
+    hideFromGate(gate, duration) {
+        const maskWidth = gate.displayWidth;
+        const maskHeight = gate.displayHeight;
+    
+        const maskRect = this.scene.add.rectangle(
+            gate.x,                     
+            gate.y - maskHeight/2 + 15,    
+            maskWidth,
+            maskHeight/4,
+            0x000000
+        ).setOrigin(0.5, 0);
+    
+        const mask = maskRect.createGeometryMask();
+        this.setMask(mask);
+    
+        
+        this.scene.events.on("update", () => {
+            maskRect.x = gate.x;
+            maskRect.y = maskRect.y; 
+        });
+    
+        this.scene.tweens.add({
+            targets: maskRect,
+            y: gate.y + maskHeight / 2,              
+            duration,
+            ease: "Linear",
+            onComplete: () => {
+                maskRect.destroy();
+                this.clearMask(true);
+                this.setVisible(false);
+            }
+        });
+    }
+    
     
     
 
     update(){
 
-        
+        if(this.ingate) return;
         const onGround = this.body.blocked.down || this.body.touching.down;;
-
+        
         if(this.cursors.left.isDown){
             this.setVelocityX(-this.speed);
             this.setFlipX(true);
@@ -72,4 +106,5 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
             this.setScale(0.75,0.75);
         }
     }
+    
 }

@@ -1,21 +1,34 @@
 import Phaser from "phaser";
-import {playerIdle, playerRun, playerJump, TileSet} from "../../assets";
-import Level1 from "./leveldata/level1.json";
+import {playerIdle, playerRun, playerJump, TileSet, gateIdle, gateClose} from "../../assets";
 
 export default class BootScene extends Phaser.Scene {
     constructor(){
         super("BootScene");
     }
     preload(){
-        this.load.tilemapTiledJSON("Level1",Level1);
         this.load.image("tiles", TileSet);
         this.load.spritesheet("playerIdle", playerIdle, {frameWidth: 64, frameHeight: 64});
         this.load.spritesheet("playerRun", playerRun, {frameWidth: 64, frameHeight: 64});
         this.load.spritesheet("playerJump", playerJump, {frameWidth: 64, frameHeight: 64});
+        this.load.spritesheet("gateIdle", gateIdle, {frameWidth: 1024, frameHeight: 1280});
+        this.load.spritesheet("gateClose", gateClose, {frameWidth: 1024, frameHeight: 1280});
     }
 
     create(){
 
+        if (!this.anims.exists("gateClose")) {
+
+            this.anims.create({
+                key: "gateClose",
+                frames: this.anims.generateFrameNumbers("gateClose", {
+                    start: 0,
+                    end: 7
+                }),
+                frameRate: 6,
+                
+            });
+        }
+        
         if (!this.anims.exists("idle")) {
 
             this.anims.create({

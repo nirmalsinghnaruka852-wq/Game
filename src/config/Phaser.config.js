@@ -1,6 +1,8 @@
 import Phaser from "phaser";
 import BootScene from '../game/levels/BootScene.js'
 import Level1 from '../game/levels/Level1.js';
+import Level2 from "../game/levels/Level2.js";
+
 const winSize = {
     width: 1024,
     height: 800
@@ -18,10 +20,10 @@ const config = {
         default : "arcade",
         arcade : {
             gravity:{y: 500},
-            debug: true
+            debug: false
         }
     },
-    scene: [BootScene, Level1]
+    scene: [BootScene, Level1, Level2]
 };
 
 export default config;
