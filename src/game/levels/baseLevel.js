@@ -1,7 +1,6 @@
 import Phaser from "phaser";
 import Player from "../entities/Player";
 
-
 export default class BaseLevel extends Phaser.Scene{
    constructor(key, mapKey){
         super(key);

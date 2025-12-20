@@ -2,10 +2,9 @@ import Phaser from "phaser";
 import Player from "../entities/Player";
 import MovingGapTrap from "../Traps/movingGap";
 import level1 from "./leveldata/level1.json";
-import BaseLeve from "./baseLevel";
+import BaseLevel from "./baseLevel";
 
-
-export default class Level1 extends BaseLeve{
+export default class Level1 extends BaseLevel{
     constructor(){
         super("Level1", "Level1");
         this.nextLevelKey = "Level2";
